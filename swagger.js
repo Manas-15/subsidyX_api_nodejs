@@ -2,7 +2,7 @@ const options = {
   definition: {
     openapi: "3.0.0",
     info: {
-      title: "Node js api project for mongodb",
+      title: "Node js api project for SubsidyX",
       version: "1.0.0",
     },
     servers: [
