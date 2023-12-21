@@ -1,11 +1,14 @@
 const express = require("express");
 require("./db/conn");
-const authRouter = require("./routers/authRouter");
-const categoryRouter = require("./routers/categoryRouter");
 const PORT = process.env.PORT || 3000;
 const swaggerUi = require("swagger-ui-express");
 const swaggerJSDoc = require("swagger-jsdoc");
 const swaggerOptions = require("../swagger");
+
+const authRouter = require("./routers/authRouter");
+const categoryRouter = require("./routers/categoryRouter");
+const sectorRouter = require("./routers/sectorRouter");
+
 const app = express();
 
 const swaggerSpec = swaggerJSDoc(swaggerOptions);
@@ -29,6 +32,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use(express.json());
 app.use(authRouter);
 app.use(categoryRouter);
+app.use(sectorRouter);
 
 app.listen(PORT, () => {
   console.log(`localhost running ${PORT}`);

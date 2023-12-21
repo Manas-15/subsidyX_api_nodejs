@@ -34,7 +34,7 @@ const router = new express.Router();
  *   post:
  *     tags:
  *       - Categories
- *     summary: Create a category.
+ *     summary: Create a category
  *     description: This API creates a category with the provided name.
  *     requestBody:
  *       required: true
@@ -101,7 +101,7 @@ router.get("/category", async (req, res) => {
  *   get:
  *     tags:
  *       - Categories
- *     summary: Category detail by id.
+ *     summary: Category detail
  *     description: This API retrieves details of a category based on the provided ID.
  *     parameters:
  *       - in: path
@@ -137,7 +137,7 @@ router.get("/category/:id", async (req, res) => {
  *   patch:
  *     tags:
  *       - Categories
- *     summary: Update category by id.
+ *     summary: Update category
  *     description: This API updates a category based on the provided ID.
  *     parameters:
  *       - in: path
@@ -195,7 +195,7 @@ router.patch("/category/:category_id", async (req, res) => {
  *   delete:
  *     tags:
  *       - Categories
- *     summary: Delete category by id.
+ *     summary: Delete category
  *     description: This API delete category based on the provided ID.
  *     parameters:
  *       - in: path

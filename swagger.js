@@ -19,9 +19,17 @@ const options = {
         name: "Categories",
         description: "Endpoints related to product categories",
       },
+      {
+        name: "Sectors",
+        description: "Endpoints related to product sectors",
+      },
     ],
   },
-  apis: ["./src/routers/authRouter.js", "./src/routers/categoryRouter.js"],
+  apis: [
+    "./src/routers/authRouter.js",
+    "./src/routers/categoryRouter.js",
+    "./src/routers/sectorRouter.js",
+  ],
 };
 module.exports = options;
 
