@@ -107,7 +107,7 @@ router.get("/sector", async (req, res) => {
  *         - Sectors
  *     summary: Get all sector by category id
  *     description: This API get all sectors by category id.
- * 
+ *
  *     parameters:
  *       - in: path
  *         name: category_id
@@ -126,19 +126,18 @@ router.get("/sector", async (req, res) => {
  *         description: Sector not found.
  */
 
-router.get("/sector/:category_id",async (req,res)=>{
+router.get("/sector/:category_id", async (req, res) => {
   try {
     const category_id = req.params.category_id;
     const data = await IndustrySector.find({ industry_id: category_id });
     res.status(200).send({
-      data:data,
-      status:"Success"
-    })
-
+      data: data,
+      status: "Success",
+    });
   } catch (error) {
-    res.status(500).send(error)
+    res.status(500).send(error);
   }
-})
+});
 
 //Get Sector Detail
 /**
@@ -149,7 +148,7 @@ router.get("/sector/:category_id",async (req,res)=>{
  *       - Sectors
  *     summary: Get sector detail
  *     description: This API retrieves details of a sector based on the provided id.
- * 
+ *
  *     parameters:
  *       - in: path
  *         name: id
@@ -187,7 +186,7 @@ router.get("/sector/:id", async (req, res) => {
  *       - Sectors
  *     summary: Update sector
  *     description: This API updates the sector.
- * 
+ *
  *     parameters:
  *       - in: path
  *         name: sector_id
@@ -214,8 +213,8 @@ router.get("/sector/:id", async (req, res) => {
 
 router.patch("/sector/:sector_id", async (req, res) => {
   try {
-   const sector_id = req.params.sector_id;
-   const findSector = await IndustrySector.findById({_id:sector_id})
+    const sector_id = req.params.sector_id;
+    const findSector = await IndustrySector.findById({ _id: sector_id });
     if (findSector) {
       const updatedSector = await IndustrySector.findByIdAndUpdate(
         sector_id,
@@ -238,7 +237,7 @@ router.patch("/sector/:sector_id", async (req, res) => {
   }
 });
 
-//Get Sector Detail
+//Delete Sector
 /**
  * @swagger
  * /sector/{id}:
@@ -247,7 +246,7 @@ router.patch("/sector/:sector_id", async (req, res) => {
  *       - Sectors
  *     summary: Delete sector
  *     description: This api delete sector based on the provided id.
- * 
+ *
  *     parameters:
  *       - in: path
  *         name: id
@@ -261,7 +260,7 @@ router.patch("/sector/:sector_id", async (req, res) => {
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/CategoryResponse'
+ *               $ref: '#/components/schemas/SectorResponse'
  *       404:
  *         description: Sector not found.
  */

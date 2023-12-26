@@ -8,6 +8,8 @@ const swaggerOptions = require("../swagger");
 const authRouter = require("./routers/authRouter");
 const categoryRouter = require("./routers/categoryRouter");
 const sectorRouter = require("./routers/sectorRouter");
+const stateRouter = require("./routers/stateRouter");
+const districtRouter = require("./routers/districtRouter");
 
 const app = express();
 
@@ -33,6 +35,8 @@ app.use(express.json());
 app.use(authRouter);
 app.use(categoryRouter);
 app.use(sectorRouter);
+app.use(stateRouter);
+app.use(districtRouter);
 
 app.listen(PORT, () => {
   console.log(`localhost running ${PORT}`);

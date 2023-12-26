@@ -23,13 +23,22 @@ const options = {
         name: "Sectors",
         description: "Endpoints related to product sectors",
       },
+      {
+        name: "States",
+        description: "Endpoints related to states",
+      },
+      {
+        name: "Districts",
+        description: "Endpoints related to districts",
+      },
     ],
   },
   apis: [
     "./src/routers/authRouter.js",
     "./src/routers/categoryRouter.js",
     "./src/routers/sectorRouter.js",
+    "./src/routers/stateRouter.js",
+    "./src/routers/districtRouter.js",
   ],
 };
 module.exports = options;
-
