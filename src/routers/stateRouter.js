@@ -87,7 +87,7 @@ router.post("/state", async (req, res) => {
 //Get State
 router.get("/state", async (req, res) => {
   try {
-    const allState = await State.find();
+    const allState = await State.find({}, { _id: 0 });
     res.status(200).send(allState);
   } catch (error) {
     res.status(500).send(error);

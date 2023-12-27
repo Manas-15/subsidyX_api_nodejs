@@ -90,7 +90,7 @@ router.post("/district", async (req, res) => {
  */
 router.get("/district", async (req, res) => {
   try {
-    const getAllDistrict = await District.find();
+    const getAllDistrict = await District.find({}, { _id: 0 });
     res.status(200).send(getAllDistrict);
   } catch (error) {
     res.status(500).send(error);

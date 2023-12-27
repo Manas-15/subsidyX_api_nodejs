@@ -87,7 +87,7 @@ router.post("/department", async (req, res) => {
  */
 router.get("/department", async (req, res) => {
   try {
-    const getAllDepartment = await Department.find();
+    const getAllDepartment = await Department.find({}, { _id: 0 });
     res.status(200).send(getAllDepartment);
   } catch (error) {
     res.status(500).send(error);

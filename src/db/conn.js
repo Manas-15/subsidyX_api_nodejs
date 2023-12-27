@@ -8,5 +8,5 @@ mongoose.set("strictQuery", false);
 mongoose
   // .connect("mongodb://localhost:27017/subsidyX_api_nodejs", {})
   .connect(DB, {})
-  .then(() => console.log("Atlas Database connection successful"))
+  .then(() => console.log("Atlas Database connection successfull"))
   .catch(() => console.log("Database connection faild"));

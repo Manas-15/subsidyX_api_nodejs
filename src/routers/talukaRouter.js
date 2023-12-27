@@ -93,7 +93,7 @@ router.post("/taluka", async (req, res) => {
  */
 router.get("/taluka", async (req, res) => {
   try {
-    const getAllTaluka = await Taluka.find();
+    const getAllTaluka = await Taluka.find({}, { _id: 0 });
     res.status(200).send(getAllTaluka);
   } catch (error) {
     res.status(500).send(error);

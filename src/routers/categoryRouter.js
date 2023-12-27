@@ -11,6 +11,8 @@ const router = new express.Router();
  *     Category:
  *       type: object
  *       properties:
+ *         id:
+ *           type: number
  *         name:
  *           type: string
  *
@@ -56,6 +58,7 @@ const router = new express.Router();
 router.post("/category", async (req, res) => {
   try {
     const data = new IndustryCategory({
+      id: req.body.id,
       name: req.body.name,
     });
 
@@ -66,6 +69,7 @@ router.post("/category", async (req, res) => {
       message: `${createdCategory.name} created successfully`,
     });
   } catch (err) {
+    console.error(err);
     res.status(400).send(err);
   }
 });
@@ -87,7 +91,9 @@ router.post("/category", async (req, res) => {
 
 router.get("/category", async (req, res) => {
   try {
-    const allCategory = await IndustryCategory.find();
+    const allCategory = await IndustryCategory.find({}, { _id: 0 }).select(
+      "-__v"
+    );
     res.status(200).send(allCategory);
   } catch (err) {
     res.status(400).send(err);
@@ -123,7 +129,10 @@ router.get("/category", async (req, res) => {
 router.get("/category/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const individualCategory = await IndustryCategory.findOne({ _id: id });
+    const individualCategory = await IndustryCategory.findOne(
+      { id: id },
+      { _id: 0 }
+    );
     res.status(200).send(individualCategory);
   } catch (error) {
     res.status(400).send(error);
@@ -165,12 +174,16 @@ router.get("/category/:id", async (req, res) => {
 router.patch("/category/:category_id", async (req, res) => {
   try {
     const category_id = req.params.category_id;
-    const name = req.body.name;
-    const findCat = await IndustryCategory.findById({ _id: category_id });
+    console.log(category_id);
+    const findCat = await IndustryCategory.findOne(
+      { id: category_id },
+      { _id: 0 }
+    );
+    console.log(findCat);
     if (findCat) {
-      const updatedCategory = await IndustryCategory.findByIdAndUpdate(
-        category_id,
-        { name: name },
+      const updatedCategory = await IndustryCategory.findOneAndUpdate(
+        { id: category_id },
+        { id: req.body.id, name: req.body.name },
         { new: true }
       );
       res.status(201).send({

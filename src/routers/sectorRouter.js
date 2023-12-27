@@ -91,7 +91,7 @@ router.post("/sector", async (req, res) => {
 
 router.get("/sector", async (req, res) => {
   try {
-    const allSectors = await IndustrySector.find();
+    const allSectors = await IndustrySector.find({}, { _id: 0 });
     res.status(200).send(allSectors);
   } catch (err) {
     res.status(500).send(err);

@@ -20,7 +20,7 @@ const router = new express.Router();
  *            type: string
  *          password:
  *            type: string
- * 
+ *
  *     LoginUser:
  *       type: object
  *       properties:
@@ -56,7 +56,7 @@ const router = new express.Router();
  *         application/json:
  *           schema:
  *             $ref: '#/components/schemas/CreateUser'
- * 
+ *
  * /login:
  *   post:
  *     tags:
@@ -94,7 +94,7 @@ router.post("/login", async (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
 
-    const userEmail = await Register.findOne({ email: email });
+    const userEmail = await Register.findOne({ email: email }, { _id: 0 });
     if (userEmail.password === password) {
       res.status(201).send("User logged in successfully");
     } else {

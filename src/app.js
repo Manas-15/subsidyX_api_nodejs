@@ -10,6 +10,9 @@ const categoryRouter = require("./routers/categoryRouter");
 const sectorRouter = require("./routers/sectorRouter");
 const stateRouter = require("./routers/stateRouter");
 const districtRouter = require("./routers/districtRouter");
+const talukaRouter = require("./routers/talukaRouter");
+const departmentRouter = require("./routers/departmentRouter");
+const questionRouter = require("./routers/questionRouter");
 
 const app = express();
 
@@ -37,6 +40,9 @@ app.use(categoryRouter);
 app.use(sectorRouter);
 app.use(stateRouter);
 app.use(districtRouter);
+app.use(talukaRouter);
+app.use(departmentRouter);
+app.use(questionRouter);
 
 app.listen(PORT, () => {
   console.log(`localhost running ${PORT}`);
